@@ -1,4 +1,4 @@
-from Ports import NetworkSpeedTemplate
+import NetworkSpeedTemplate
 
 
 class NetworkSpeedFlow(NetworkSpeedTemplate):

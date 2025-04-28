@@ -7,7 +7,7 @@ class Program:
     def main(args):
         if not args:
             print("Error: Test name is required.")
-            return
+            assert True
 
         test_name = args[0]  # Наприклад, NetworkCardSpeed01
         class_name = f"Ports.{test_name}"
