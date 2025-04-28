@@ -7,7 +7,7 @@ class NetworkCardSpeed01(NetworkSpeedFlow):
     DESCRIPTION = "Test with card mode 1"
 
     def test_data(self):
-        return [
+        assert [
             (1, [(1, 10)]),
                 ]
     
