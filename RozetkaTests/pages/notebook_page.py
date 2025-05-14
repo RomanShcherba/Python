@@ -8,19 +8,19 @@ class NotebookPage(BasePage):
     sort_by_expensive = (By.XPATH, "//select[@class='select-css setting-sorting font-rozetka']//option[@value='expensive']")
     sort_by_new = (By.XPATH, "//select[@class='select-css setting-sorting font-rozetka']//option[@value='novelty']")
     sort_by_rank = (By.XPATH, "//select[@class='select-css setting-sorting font-rozetka']//option[@value='rank']")
-    asus_checkbox = (By.XPATH, "//rz-indexed-link[@data-id='ASUS']")
-    asus_notebook_message = (By.XPATH, "//h1[text()='Ноутбуки ASUS']")
-    
+    dell_checkbox = (By.XPATH, "(//div[contains(@class,'scrollbar custom-child-scrollbar')]//a)[4]")
+    dell_notebook_message = (By.XPATH, "//h1[contains(text(),'Ноутбуки Dell')]")
 
     def __init__(self, driver):
         super().__init__(driver)
         self.driver = driver
 
     def sort_expensive(self):
-        self.click(self.sort_by_expensive)
+        self.wait_for_clickable(self.sort_by_expensive).click()
 
-    def click_asus_checkbox(self):
-        self.click(self.asus_checkbox)
+    def click_dell_checkbox(self):
+        self.wait_for_clickable(self.dell_checkbox).click()
 
-    def get_asus_notebooks_message(self):
-        return self.get_text(self.asus_notebook_message)
+    def get_dell_notebooks_message(self):
+        self.wait_for_visible(self.dell_notebook_message)
+        return self.get_text(self.dell_notebook_message)

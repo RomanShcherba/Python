@@ -11,4 +11,4 @@ class CategoryProductsPage(BasePage):
         self.driver = driver
 
     def click_category_notebooks(self):
-        self.click(self.category_notebooks)
+        self.wait_for_clickable(self.category_notebooks).click()
