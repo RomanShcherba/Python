@@ -1,5 +1,5 @@
 from selenium.webdriver.common.by import By
-from pages.base_page import BasePage
+from pages.base_page import BasePage, log_action
 
 
 
@@ -15,12 +15,15 @@ class NotebookPage(BasePage):
         super().__init__(driver)
         self.driver = driver
 
+    @log_action
     def sort_expensive(self):
         self.wait_for_clickable(self.sort_by_expensive).click()
 
+    @log_action
     def click_dell_checkbox(self):
         self.wait_for_clickable(self.dell_checkbox).click()
 
+    @log_action
     def get_dell_notebooks_message(self):
         self.wait_for_visible(self.dell_notebook_message)
         return self.get_text(self.dell_notebook_message)

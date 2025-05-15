@@ -1,4 +1,4 @@
-from pages.base_page import BasePage
+from pages.base_page import BasePage, log_action
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
@@ -15,9 +15,11 @@ class ProductsPage(BasePage):
         super().__init__(driver)
         self.driver = driver
 
+    @log_action
     def click_to_product(self):
         self.wait_for_clickable(self.click_on_product).click()
 
+    @log_action
     def click_add_to_cart_button(self):
         button = self.wait_for_clickable(self.add_to_cart_button)
         
@@ -26,13 +28,16 @@ class ProductsPage(BasePage):
             EC.presence_of_element_located((By.CLASS_NAME, "buy-button_state_in-cart"))
         )
 
+    @log_action
     def click_open_cart_button(self):
         self.wait_for_clickable(self.open_cart_button).click()
 
+    @log_action
     def get_pop_up_cart(self):
         self.wait_for_visible(self.pop_up_cart)
         return self.get_text(self.pop_up_cart)
     
+    @log_action
     def confirm_added_to_cart(self):
         self.wait_for_visible(self.cart_products_number)
         return self.cart_products_number

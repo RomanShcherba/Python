@@ -1,4 +1,4 @@
-from pages.base_page import BasePage
+from pages.base_page import BasePage, log_action
 from selenium.webdriver.common.by import By
 
 class SearchResultPage(BasePage):
@@ -10,11 +10,12 @@ class SearchResultPage(BasePage):
         super().__init__(driver)
         self.driver = driver
 
-    
+    @log_action
     def get_bycicle_message(self):
         self.wait_for_visible(self.bycicle_message)
         return self.get_text(self.bycicle_message)
     
+    @log_action
     def click_product_search_result(self):
         self.wait_for_clickable(self.product_search_result).cklick()
     
