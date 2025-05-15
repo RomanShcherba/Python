@@ -6,7 +6,7 @@ from utils.test_data import TestData
 
 
 class TestAddToCart(BaseTest):
-    def test_search(self):
+    def test_add_to_cart(self):
         main_page = MainPage(self.driver)
         main_page.enter_search_text(TestData.search_input)
         main_page.click_search_button()
