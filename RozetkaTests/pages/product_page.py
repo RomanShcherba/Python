@@ -12,7 +12,8 @@ class ProductPage(BasePage):
     option_button = (By.XPATH, "//button[@id='cartProductActions0']")
     delete_button = (By.XPATH, "//button[@class='button button--medium button--with-icon button--link']")
     get_empty_cart_message = (By.XPATH, "//h4[text()='Кошик порожній']")
-    
+    checkout_button = (By.XPATH, "//a[@class ='button button--green button_size_large cart-receipt__submit']")
+
     def __init__(self, driver):
         self.driver = driver
 
@@ -32,6 +33,10 @@ class ProductPage(BasePage):
     @log_action
     def click_option_button(self):
         self.wait_for_clickable(self.option_button).click()
+        if self.wait_for_clickable(self.option_button):
+            logging.info("Option button is visible")
+        else:
+            logging.info("Option button is not visible")
 
     @log_action
     def click_delete_button(self):
@@ -41,3 +46,8 @@ class ProductPage(BasePage):
     def get_message_cart(self):
         self.wait_for_visible(self.get_empty_cart_message)
         return self.get_text(self.get_empty_cart_message)
+    
+    @log_action
+    def click_checkout_button(self):
+        self.wait_for_clickable(self.checkout_button).click()
+       
