@@ -55,3 +55,7 @@ class BasePage:
         return WebDriverWait(self.driver, timeout).until(
             EC.text_to_be_present_in_element(locator, text)
         )
+    @log_action
+    def scroll_into_view(self, locator):
+        element = self.find(locator)
+        self.driver.execute_script("arguments[0].scrollIntoView();", element)    
