@@ -10,5 +10,5 @@ def test_search(driver):
         main_page.click_search_button()
         search_result_page = SearchResultPage(driver)
         actual_message = search_result_page.get_bycicle_message()
-        expected_message = "Велосипеди"
+        expected_message = TestData.query
         assert actual_message == expected_message

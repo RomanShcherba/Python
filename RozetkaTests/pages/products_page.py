@@ -40,5 +40,5 @@ class ProductsPage(BasePage):
     @log_action
     def confirm_added_to_cart(self):
         self.wait_for_visible(self.cart_products_number)
-        return self.cart_products_number
+        return int(self.get_text(self.cart_products_number))
        
