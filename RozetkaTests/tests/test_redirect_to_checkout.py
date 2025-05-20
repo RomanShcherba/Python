@@ -5,7 +5,6 @@ from pages.products_page import ProductsPage
 from utils.test_data import TestData
 
 
-
 def test_redirect_to_checkout(driver):
     main_page = MainPage(driver)
     main_page.enter_search_text(TestData.search_input)
@@ -19,5 +18,5 @@ def test_redirect_to_checkout(driver):
     checkout_page = CheckoutPage(driver)
     checkout_page.get_checkout_message()
     actual_message = checkout_page.get_checkout_message()
-    expected_message = "Оформлення замовлення"
+    expected_message = TestData.checkout_text
     assert actual_message == expected_message

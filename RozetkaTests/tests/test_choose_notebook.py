@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 from pages.category_products_page import CategoryProductsPage
 from pages.main_page import MainPage
 from pages.notebook_page import NotebookPage
+from utils.test_data import TestData
 
 
 def test_choose_notebook(driver):
@@ -15,5 +16,5 @@ def test_choose_notebook(driver):
         notebook_page.sort_expensive()
         notebook_page.click_dell_checkbox()
         actual_message = notebook_page.get_dell_notebooks_message()
-        expected_message = "Ноутбуки Dell"
+        expected_message = TestData.notebook_msg
         assert actual_message == expected_message
