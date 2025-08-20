@@ -5,3 +5,5 @@ class TestData:
     empty_cart_message = "Кошик порожній"
     notebook_msg = "Ноутбуки Dell"
     checkout_text = "Оформлення замовлення"
+    search_text = "рюкзак"
+    phone_number = "+380123456789"
