@@ -1,4 +1,3 @@
-import unittest  
 import pytest
 from selenium import webdriver
 
@@ -9,3 +8,4 @@ def driver():
     driver.get("https://rozetka.com.ua/")
     yield driver
     driver.quit()
+    
