@@ -1,3 +1,4 @@
+import pytest
 from plwrght_pages.main_page import MainPage
 from utils.test_data import TestData
 
@@ -6,10 +7,10 @@ from utils.test_data import TestData
 #     main_page.click_cabinet_sidebar_button()
 #     main_page.click_sign_in_button()
 #     assert main_page.is_login_enter_message_displayed(timeout=5000)
-   
-def test_enter_phone_number(page):
+@pytest.mark.asyncio
+async def test_enter_phone_number(page):
     main_page = MainPage(page)
-    main_page.click_cabinet_sidebar_button()
-    main_page.click_sign_in_button()
-    main_page.enter_phone_number(TestData.phone_number)
-    
+    await main_page.click_cabinet_sidebar_button()
+    await main_page.click_sign_in_button()
+    await main_page.click_login_button()
+    await main_page.enter_email(TestData.email)

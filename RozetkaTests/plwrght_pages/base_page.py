@@ -19,28 +19,28 @@ class BasePage:
         self.page = page
 
     @log_action
-    def navigate(self, url: str):
-        self.page.goto(url)
+    async def navigate(self, url: str):
+        await self.page.goto(url)
 
     @log_action
-    def click(self, locator: str):
-        self.page.click(locator)
+    async def click(self, locator: str):
+        await self.page.click(locator)
 
     @log_action
-    def send_keys(self, locator: str, text: str, press_enter=False):
-        self.page.fill(locator, text)
+    async def send_keys(self, locator: str, text: str, press_enter=False):
+        await self.page.fill(locator, text)
         if press_enter:
-            self.page.press(locator, "Enter")
+            await self.page.press(locator, "Enter")
 
     @log_action
-    def get_text(self, locator: str):
-        return self.page.inner_text(locator)
+    async def get_text(self, locator: str):
+        return await self.page.inner_text(locator)
 
     @log_action
-    def get_title(self):
-        return self.page.title()
+    async def get_title(self):
+        return await self.page.title()
 
     @log_action
-    def scroll_into_view(self, locator: str):
+    async def scroll_into_view(self, locator: str):
         element = self.page.locator(locator)
-        element.scroll_into_view_if_needed()
+        await element.scroll_into_view_if_needed()
