@@ -9,6 +9,6 @@ class SearchResultPage(BasePage):
         super().__init__(page)
 
     @log_action
-    def is_search_result_displayed(self, timeout: int = 5000):
-        self.page.wait_for_selector(self.search_result, timeout=timeout)
-        return self.page.is_visible(self.search_result)
+    async def is_search_result_displayed(self, timeout: int = 5000):
+        await self.page.wait_for_selector(self.search_result, timeout=timeout)
+        return await self.page.is_visible(self.search_result)

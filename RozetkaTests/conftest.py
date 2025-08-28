@@ -1,14 +1,15 @@
 import pytest
-from playwright.sync_api import sync_playwright
+from playwright.async_api import async_playwright
+import pytest_asyncio
 
-@pytest.fixture
-def page():
-    p = sync_playwright().start()
-    browser = p.chromium.launch(headless=False)
-    context = browser.new_context(viewport={"width": 1920, "height": 1080})
-    page = context.new_page()
-    page.goto("https://prom.ua/ua/")
-    yield page
-    # context.close()
-    # browser.close()
-    page.pause()  
+@pytest_asyncio.fixture
+async def page():
+    async with async_playwright() as pw:
+        browser = await pw.chromium.launch(headless=False)
+        context = await browser.new_context(viewport={"width": 1920, "height": 1080})
+        page = await context.new_page()
+        await page.goto("https://prom.ua/ua/")
+        yield page
+        # await context.close()
+        # await browser.close()
+        await page.pause()
